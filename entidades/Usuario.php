@@ -1,21 +1,30 @@
 <?php
 Class Usuario{
-    private $idUsuario;
-    private $usuario;
-    private $password;
-    private $nombre;
-    private $apellidoPaterno;
-    private $apellidoMaterno;
-    private $dni;
-    private $telefono;
-    private $domicilio;
-    private $fechaRegistro; 
+   // public $idUsuario;
+    public $idRol;
+    public $usuario;
+    public $contrasena;
+    public $nombre;
+    public $apellidoPaterno;
+    public $apellidoMaterno;
+    public $dni;
+    public $telefono;
+    public $domicilio;
+    public $fechaRegistro; 
 }
-function get_id(){
+/*
+function get_idUsuario(){
     return $this->idUsuario;
 }
-function set_id($idUsuario){
+function set_idUsuario($idUsuario){
     return $this->idUsuario=$idUsuario;
+}
+*/
+function get_idRol(){
+    return $this->$idRol;
+}
+function set_idRol($idRol){
+    return $this->idUsuario=$idRol;
 }
 function get_usuario(){
     return $this->usuario;
@@ -23,11 +32,11 @@ function get_usuario(){
 function set_usuario($usuario){
     return $this->usuario=$usuario;
 }
-function get_password(){
-    return $this->password;
+function get_contrasena(){
+    return $this->contrasena;
 }
-function set_password($password){
-    return $this->password=$password;
+function set_contrasena($contrasena){
+    return $this->contrasena=$contrasena;
 }
 function get_nombre(){
     return $this->nombre;
