@@ -27,7 +27,7 @@ Class RolesDatos{
         mysqli_close($con);
     }
 }
-
+/*
 $obj = new RolesDatos();
     if($obj->insertarRoles("Gerente")){
         echo "Se ha insertado el rol Adminstrador";
@@ -41,5 +41,5 @@ $obj3= new Rolesdatos();
     if($obj3->insertarRoles("Cajero")){
         echo "Se ha insertado el rol Mecánico";
     };
-
+*/
 ?>

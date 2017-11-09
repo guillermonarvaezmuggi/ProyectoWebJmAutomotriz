@@ -5,13 +5,13 @@
     <title>Insertar Rol</title>
 </head>
 <body>
-    <form action="insertar.php" method="POST">
+    <div>
     <fieldset> 
     <legend> Insertar Rol</legend>
     <label>Nombre del rol :</label>
     <input type="text" name="rol">
-    <input type="submit">
-    </fieldset>
-    </form>
+    <input type="button" value="registrar" id="btnregistrar">
+</div>
+    
 </body>
 </html>

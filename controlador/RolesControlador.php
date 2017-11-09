@@ -2,7 +2,7 @@
 include "../datos/RolesDatos.php";
 Class RolesControlador{
     function insertarRoles($nombre){
-        $obj= new RolesControlador();
+        $obj= new RolesDatos();
         return $obj->insertarRoles($nombre);
     }
 }
