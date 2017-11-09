@@ -8,6 +8,7 @@ Class Usuario{
     public $apellidoPaterno;
     public $apellidoMaterno;
     public $dni;
+    public $sexo;
     public $telefono;
     public $domicilio;
     public $fechaRegistro; 
@@ -64,6 +65,12 @@ function set_dni($dni){
 }
 function get_telefono(){
     return $this->telefono;
+}
+function get_sexo(){
+    return $this->sexo;
+}
+function set_sexo($sexo){
+    return $this->sexo=$sexo;
 }
 function set_telefono(){
     return $this->telefono=$telefono;
