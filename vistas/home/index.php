@@ -1,9 +1,16 @@
-<!DOCTYPE html>
-<!--[if lt IE 7 ]> <html lang="en" class="no-js ie6 lt8"> <![endif]-->
-<!--[if IE 7 ]>    <html lang="en" class="no-js ie7 lt8"> <![endif]-->
-<!--[if IE 8 ]>    <html lang="en" class="no-js ie8 lt8"> <![endif]-->
-<!--[if IE 9 ]>    <html lang="en" class="no-js ie9"> <![endif]-->
-<!--[if (gt IE 9)|!(IE)]><!--> <html lang="en" class="no-js"> <!--<![endif]-->
+<?php
+
+include($_SERVER['DOCUMENT_ROOT']."/ProyectoWebJmAutomotriz/datos/Conexion.php");
+$cnn = new Conexion();
+$con = $cnn->conectar();
+
+mysqli_select_db($con,"jmAutomotrizEIRL");
+$sql = "SELECT *FROM Rol";
+$resultado= mysqli_query($con,$sql);
+?>
+
+
+<html lang="en" class="no-js"> <!--<![endif]-->
     <head>
         <meta charset="UTF-8" />
         <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">  -->
@@ -22,8 +29,6 @@
             <section>
                 <div id="container_demo" >
                     <!-- hidden anchor to stop jump http://www.css3create.com/Astuce-Empecher-le-scroll-avec-l-utilisation-de-target#wrap4  -->
-                    <a class="hiddenanchor" id="toregister"></a>
-                    <a class="hiddenanchor" id="tologin"></a>
                     <div id="wrapper">
                         <div id="login" class="animate form">
                             <form  action="mysuperscript.php" autocomplete="on">
@@ -36,11 +41,22 @@
                                     <label for="password" class="youpasswd">Password</label>
                                     <input id="password" name="password" required="required" type="password" placeholder="Ingrese su password" />
                                 </p>
+                                <p>
+                                <select name="rol" id="rol" class="form-control" onchange="this.style.width=200">
+        <OPTION selected="selected">--seleccione--</option>
+        <?php while($row = $resultado->fetch_assoc()){ ?>
+        <option value="<?php echo $row['idRol']; ?>">
+        <?php echo $row['nombre'];?></option>
+        <?php } ?>  
+        </select>
+        </p>
                                 
                                 <p class="change_link">
-									<a href="#toregister" class="to_register">Iniciar Sesión</a>
+									<a href="pruebin.php" class="to_register">Iniciar Sesión</a>
 								</p>
                             </form>
+
+        </div>
 
 
 

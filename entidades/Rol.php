@@ -8,6 +8,6 @@ Class Rol{
     }
     function set_nombre($nombre){
         $this->nombre=$nombre;
-    }
+    } 
 }
 ?>

@@ -1,6 +1,8 @@
 <?php
-include "../entidades/Rol.php";
-include "Conexion.php";
+include($_SERVER['DOCUMENT_ROOT']."/ProyectoWebJmAutomotriz/entidades/Rol.php");
+//include "../entidades/Rol.php";
+include($_SERVER['DOCUMENT_ROOT']."/ProyectoWebJmAutomotriz/datos/Conexion.php");
+//include "Conexion.php";
 Class RolesDatos{
     function insertarRoles($nombre){
         $cnn= new Conexion();
@@ -11,7 +13,7 @@ Class RolesDatos{
         //seleccionamos la BD
         mysqli_select_db($con,"jmAutomotrizEIRL");
         //creamos el sql
-        $sql="INSERT INTO Rol(nombre) VALUES
+        $sql="INSERT INTO rol(nombre) VALUES
         (
             '".$rol->nombre."'
 

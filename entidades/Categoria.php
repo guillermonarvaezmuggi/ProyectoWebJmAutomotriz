@@ -15,9 +15,5 @@ Class Categoria{
     function set_nombre($nombre){
         $this->nombre=$nombre;
     }
-
 }
-
-
-
 ?>

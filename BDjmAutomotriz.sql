@@ -84,5 +84,6 @@ direccion varchar(100),
 sexo varchar(1),
 dni varchar(8) unique,
 CONSTRAINT idRoll_fk FOREIGN KEY
-(idRol) REFERENCES rol(idRol)
+(idRol) REFERENCES rol(idRol),
+CONSTRAINT idUsuario_pk PRIMARY KEY()
 );

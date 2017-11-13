@@ -1,5 +1,7 @@
 $(document).ready(ini);
 
+
+
 function ini(){
     //alert("Iniciado");
     $("#btnregistrar").click(enviarDatos);
@@ -59,3 +61,5 @@ function enviarDatos(){
         type:"GET"
     });
 }
+
+
