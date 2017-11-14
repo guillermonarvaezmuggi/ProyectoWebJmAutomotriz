@@ -29,12 +29,12 @@
     }
         
     </style>
-    <title>Ingresar Categoria</title>
+    <title>Ingresar Unidades de Medida</title>
 </head>
 <body>
 <div class="container box">
-    <h1>Ingreso de Categorias del Producto</h1>
-    <label>Nombre Categoria</label>
+    <h1 align="center">Ingreso de Unidades de medida del Producto</h1>
+    <label>Unidad de Medida</label>
     <input type="text" name="nombre" id="nombre" class="form-control">
     <br></br>
     <div align="center" >
@@ -53,8 +53,8 @@
 
 <script>
 $(document).ready(function(){
-    fetchCategoria();
-    function fetchCategoria(){
+    fetchUnidad();
+    function fetchUnidad(){
         var action="select";
         $.ajax({
             url : "select.php",
@@ -85,7 +85,7 @@ $(document).ready(function(){
                     console.log("La respuesta fue:")
                     console.log(result);
                 alert(result);
-                    fetchCategoria();
+                    fetchUnidad();
                 }
             })
 
@@ -110,14 +110,14 @@ $(document).on('click','.update',function(){
 })
 $(document).on('click','.delete',function(){
     var id=$(this).attr("id");
-    if(confirm("Estas seguro de Eliminar esta categoria?")){
+    if(confirm("Estas seguro de Eliminar esta unidad de medida?")){
         var action="Delete"; 
         $.ajax({
             url:"action.php",
             method:"POST",
             data:{id:id,action:action},
             success:function(result){
-                fetchCategoria();
+                fetchUnidad();
                 alert(result);
             }
         })

@@ -53,8 +53,8 @@
 
 <script>
 $(document).ready(function(){
-    fetchCategoria();
-    function fetchCategoria(){
+    fetchSubCategoria();
+    function fetchSubCategoria(){
         var action="select";
         $.ajax({
             url : "select.php",
@@ -85,7 +85,7 @@ $(document).ready(function(){
                     console.log("La respuesta fue:")
                     console.log(result);
                 alert(result);
-                    fetchCategoria();
+                    fetchSubCategoria();
                 }
             })
 
@@ -110,14 +110,14 @@ $(document).on('click','.update',function(){
 })
 $(document).on('click','.delete',function(){
     var id=$(this).attr("id");
-    if(confirm("Estas seguro de Eliminar esta categoria?")){
+    if(confirm("Estas seguro de Eliminar esta SubCategoria?")){
         var action="Delete"; 
         $.ajax({
             url:"action.php",
             method:"POST",
             data:{id:id,action:action},
             success:function(result){
-                fetchCategoria();
+                fetchSubCategoria();
                 alert(result);
             }
         })

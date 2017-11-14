@@ -77,6 +77,41 @@ function crearTablaCategoria(){
 
 crearTablaCategoria();
 
+function crearTablaSubCategoria(){
+    $cnn = new Conexion();
+    $con = $cnn->conectar();
+
+    mysqli_select_db($con,"jmAutomotrizEIRL");
+    $sqlCategoria="CREATE TABLE subCategoria(
+    idSubCategoria INT NOT NULL auto_increment,
+    nombre VARCHAR(100),
+    CONSTRAINT idSubCategoria_pk PRIMARY KEY
+    (idSubCategoria)
+    )";
+    if(mysqli_query($con,$sqlCategoria)){
+        echo "Tabla SubCategoria Creada";
+    }
+    mysqli_close($con);
+}
+crearTablaSubCategoria();
+
+function crearTablaUnidad(){
+    $cnn = new Conexion();
+    $con = $cnn->conectar();
+
+    mysqli_select_db($con,"jmAutomotrizEIRL");
+    $sqlCategoria="CREATE TABLE unidad(
+    idUnidad INT NOT NULL auto_increment,
+    nombre VARCHAR(100),
+    CONSTRAINT idUnidad_pk PRIMARY KEY
+    (idUnidad)
+    )";
+    if(mysqli_query($con,$sqlCategoria)){
+        echo "Tabla Unidad Creada";
+    }
+    mysqli_close($con);
+}
+crearTablaUnidad();
 function crearTablaProducto(){
     $cnn = new Conexion();
     $con = $cnn->conectar();
@@ -85,21 +120,26 @@ function crearTablaProducto(){
     $sqlProducto="CREATE TABLE producto(
     idProducto int not null auto_increment,
     idCategoria int,
+    idSubCategoria int,
     idMarca int,
-    descripcion varchar(100),
+    idUnidad int,
+    nombre varchar(300),
+    descripcion varchar(300),
+    imagen LONGBLOB,
     stock float,
     precio float,
     observacion varchar(300),
-    CONSTRAINT idCategoria_fk foreign key
-    (idCategoria) REFERENCES categoria(idCategoria),
-    CONSTRAINT idMarca_fk FOREIGN KEY 
-    (idMarca) REFERENCES marca(idMarca),
-    CONSTRAINT idProducto_pk PRIMARY KEY (idProducto),
-    CONSTRAINT precio_ck2 check(precio>0)
+    CONSTRAINT idUnidad_fk FOREIGN KEY (idUnidad) REFERENCES unidad(idUnidad),
+    CONSTRAINT idMarca_fk FOREIGN KEY (idMarca) REFERENCES marca(idMarca),
+    CONSTRAINT idCategoria_fk foreign key (idCategoria) REFERENCES categoria(idCategoria), 
+    CONSTRAINT idSubCategoria_fk FOREIGN KEY (idSubCategoria) REFERENCES subCategoria(idSubCategoria), 
+    CONSTRAINT idProducto_pk PRIMARY KEY (idProducto)
     )";
 
     if(mysqli_query($con,$sqlProducto)){
         echo "Tabla Producto creada";
+    }else{
+        echo "hay un error en tabla producto";
     }
     mysqli_close($con);
 }
@@ -183,5 +223,8 @@ function crearTablaUsuario(){
     mysqli_close($con);
 }
 crearTablaUsuario();
+
+
+
 
 ?>
