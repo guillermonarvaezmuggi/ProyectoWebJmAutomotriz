@@ -113,11 +113,11 @@ $resultado2=mysqli_query($con2,$sql2);
         <br></br>
         <Label> Nombre:</label>
         <input type="text" name="nombre" id="nombre" 
-        class="form-control" placeholder="Ingrese su nombre completo"/>
+        class="form-control" placeholder="Ingrese el nombre del producto"/>
         <br></br>
         <Label> Descripción:</label>
         <input type="textarea" row="10"  name="descripcion" id="descripcion" 
-        class="form-control" placeholder="Ingrese el apellido paterno"/>
+        class="form-control" placeholder="Ingrese la descripcion del producto"/>
         <br></br>
         <Label> Imagen:</label>
         <button type="button" style='width:200px; height:50px'>Seleccionar Imagen</button>
@@ -180,24 +180,23 @@ $resultado2=mysqli_query($con2,$sql2);
 
 <script>
 $(document).ready(function(){
-    fetchUser();
-    function fetchUser(){
+    fetchProducto();
+    function fetchProducto(){
         var action="select";
         $.ajax({
             url : "select.php",
             method:"POST",
             data:{action:action},
                 success:function(data){
-                    $("#usuario").val('');
-                    $("#contrasena").val('');
-                    $("#rol").val('');
+                    $("#categoria").val('');
+                    $("#subCategoria").val('');
+                    $("#marca").val('');
+                    $("#unidad").val('');
                     $("#nombre").val('');
-                    $("#apellidoPaterno").val('');
-                    $("#apellidoMaterno").val('');
+                    $("#descripcion").val('');
                     $("#stock").val('');
                     $("#precio").val('');
-                    $("telefono").val('');
-                    $("#domicilio").val('');
+                    $("observacion").val('');
                     $("#action").text("Add");
                     $("#result").html(data);
                 }
@@ -208,58 +207,57 @@ $(document).ready(function(){
     }
 
     $('#action').click(function(){
-        var usuario= $("#usuario").val();
-        var contrasena=$("#contrasena").val();
-        var rol=$("#rol").val();
+        var categoria= $("#categoria").val();
+        var subCategoria=$("#subCategoria").val();
+        var marca=$("#marca").val();
+        var unidad=$("#unidad").val();
         var nombre=$("#nombre").val();
-        var apellidoPaterno=$("#apellidoPaterno").val();
-        var apellidoMaterno=$("#apellidoMaterno").val();
+        var descripcion=$("#descripcion").val();
         var stock=$("#stock").val();
         var precio=$("#precio").val();
-        var telefono=$("#telefono").val();
-        var domicilio=$("#domicilio").val();
+        var observacion=$("#observacion").val();
         var id=$("#user_id").val();
         var action=$("#action").text();
-        console.log(usuario);
-        console.log(contrasena);
-        console.log(rol);
+        console.log(categoria);
+        console.log(subCategoria);
+        console.log(marca);
+        console.log(unidad);
         console.log(nombre);
-        console.log(apellidoPaterno);
-        console.log(apellidoMaterno);
+        console.log(descripcion);
         console.log(stock);
         console.log(precio);
-        console.log(telefono);
-        console.log(domicilio);
+        console.log(observacion);
         console.log(id);
         console.log(action);
-
-        if(usuario!='' && contrasena!=''){
+        if(categoria!='' && subCategoria!=''
+           && unidad!='' && marca!=''
+           && nombre!='' && descripcion!=''
+           && precio!='' && stock!=''){
             $.ajax({
                 url:"action.php",
                 method:"POST",
                 data:{
-                usuario:usuario,
-                contrasena:contrasena,
-                rol:rol,
+                categoria:categoria,
+                subCategoria:subCategoria,
+                marca:marca,
+                unidad:unidad,
                 nombre:nombre,
-                apellidoPaterno:apellidoPaterno,
-                apellidoMaterno:apellidoMaterno,
+                descripcion:descripcion,
                 stock:stock,
                 precio:precio,
-                telefono:telefono,
-                domicilio:domicilio,
+                observacion:observacion,
                 id:id,
                 action:action},
                 success:function(result){
                     console.log("La respuesta fue:")
                     console.log(result);
                 alert(result);
-                    fetchUser();
+                    fetchProducto();
                 }
             })
 
         }else{
-            alert("Ambos son improatntes")
+            alert("..Se deben ingresar todos los campos..")
         }
     });
 
@@ -273,29 +271,28 @@ $(document).on('click','.update',function(){
         success:function(data){
             $('#action').text("Edit");  
             $('#user_id').val(id);
-            $("#usuario").val(data.usuario);
-            $("#contrasena").val(data.contrasena);
-            $("#rol").val(data.rol);
+            $("#categoria").val(data.categoria);
+            $("#subCategoria").val(data.subCategoria);
+            $("#marca").val(data.marca);
+            $("#unidad").val(data.unidad);
             $("#nombre").val(data.nombre);
-            $("#apellidoPaterno").val(data.apellidoPaterno);
-            $("#apellidoMaterno").val(data.apellidoMaterno);
+            $("#descripcion").val(data.descripcion);
             $("#stock").val(data.stock);
             $("#precio").val(data.precio);
-            $("#telefono").val(data.telefono);
-            $("#domicilio").val(data.domicilio);
+            $("#observacion").val(data.observacion);
         }
     });
 })
 $(document).on('click','.delete',function(){
     var id=$(this).attr("id");
-    if(confirm("Estas seguro de Eliminar a este Usuario?")){
+    if(confirm("¿Estas seguro de Eliminar a este Producto?")){
         var action="Delete";
         $.ajax({
             url:"action.php",
             method:"POST",
             data:{id:id,action:action},
             success:function(result){
-                fetchUser();
+                fetchProducto();
                 alert(result);
             }
         })
