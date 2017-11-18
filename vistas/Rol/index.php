@@ -44,6 +44,7 @@
     <br></br>
     <div id="result" class="table-responsive">
     </div>
+
 </div>
 
 <script>
@@ -64,6 +65,7 @@
     }
 
 }
+
         </script>
         </body>
 </html>
@@ -142,9 +144,5 @@ $(document).on('click','.delete',function(){
         return false;
     }
 })
-
-
-
-
 })
 </script>

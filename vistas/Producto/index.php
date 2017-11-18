@@ -116,11 +116,13 @@ $resultado2=mysqli_query($con2,$sql2);
         class="form-control" placeholder="Ingrese su nombre completo"/>
         <br></br>
         <Label> Descripción:</label>
-        <input type="text" name="descripcion" id="descripcion" 
+        <input type="textarea" row="10"  name="descripcion" id="descripcion" 
         class="form-control" placeholder="Ingrese el apellido paterno"/>
         <br></br>
         <Label> Imagen:</label>
+        <button type="button" style='width:200px; height:50px'>Seleccionar Imagen</button>
         <h1>aca va la imagen</h1>
+
        <br></br>
 
         <h1>aca termina la imagen</h1>

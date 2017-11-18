@@ -116,11 +116,7 @@ $resultado2=mysqli_query($con2,$sql2);
 
         <button type="button" name="action" id="action"
             class="btn btn-warning" style='width:100px; height:75px'> Add</button>
-
-
         <input type="hidden" name="id" id="user_id"/>
-              
-
         </div>
 
         <br></br>
