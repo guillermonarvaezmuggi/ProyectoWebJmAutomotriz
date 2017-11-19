@@ -27,27 +27,56 @@
         border-radius:5px;
         margin-top:100px;
     }
-        
+
     </style>
     <title>Ingresar Unidades de Medida</title>
 </head>
 <body>
-<div class="container box">
-    <h1 align="center">Ingreso de Unidades de medida del Producto</h1>
-    <label>Unidad de Medida</label>
-    <input type="text" name="nombre" id="nombre" class="form-control">
-    <br></br>
-    <div align="center" >
-            <button type="button" name="action" id="action"
-                class="btn btn-warning" style='width:80px; height:65px'> Add</button>
-            <input type="hidden" name="id" id="user_id"/>
+    <!-- Button trigger modal -->
+  <div class="container box">
+    <h1 align="center">Unidades de medida de los Productos</h1>
+    <div align="right">
+    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Añadir</button>
+  </div>
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog">
+      <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h1 class="modal-title" align="center">Registro</h1>
+          </div>
+          <div class="modal-body">
+            <p>
+              <h3 align="center">Unidad de Medida</h3>
+              <input type="text" name="nombre" id="nombre" class="form-control">
+              <br></br>
+              <center>
+              <button type="button" name="action" id="action"
+                  class="btn btn-success" style='width:90px; height:75px'>Add</button>
+                </center>
+                <br></br>
+              <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              </div>
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
-    <br></br>
-    <div id="result" class="table-responsive">
-    </div>
-</div>
+          <div align="center" >
+  <!--
+          <button type="button" name="action" id="action"
+              class="btn btn-warning" style='width:100px; height:75px'> Add</button>
+  -->
+          <input type="hidden" name="id" id="user_id"/>
+          </div>
+          <br></br>
+          <div id="result" class="table-responsive">
 
-    
+          </div>
+  </div>
 </body>
 </html>
 
@@ -68,7 +97,7 @@ $(document).ready(function(){
             }
         )
 
-       
+
     }
 
     $('#action').click(function(){
@@ -90,7 +119,7 @@ $(document).ready(function(){
             })
 
         }else{
-            alert("Falta rellenar campos");
+            alert("Debe ingresar el nombre de la Unidad");
         }
     });
 
@@ -102,7 +131,7 @@ $(document).on('click','.update',function(){
         data:{id:id},
         dataType:"json",
         success:function(data){
-            $('#action').text("Edit");  
+            $('#action').text("Edit");
             $('#user_id').val(id);
             $("#nombre").val(data.nombre);
         }
@@ -111,7 +140,7 @@ $(document).on('click','.update',function(){
 $(document).on('click','.delete',function(){
     var id=$(this).attr("id");
     if(confirm("Estas seguro de Eliminar esta unidad de medida?")){
-        var action="Delete"; 
+        var action="Delete";
         $.ajax({
             url:"action.php",
             method:"POST",

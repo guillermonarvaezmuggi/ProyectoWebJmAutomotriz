@@ -35,7 +35,7 @@ if(isset($_POST["action"])){
                                 <th width=35%>Fecha de Registro</th>
                                 <th width=35%>Update</th>
                                 <th width=35%>Delete</th>
-                        
+
                          </tr>
                 ';
                    if(mysqli_num_rows($result)>0){
@@ -56,7 +56,7 @@ if(isset($_POST["action"])){
                                 <td>'. $row["fechaRegistro"] .'</td>
                                 <td><button type="button"
                                     name="update" id="'.$row["idUsuario"].'"s
-                                    class="update btn btn-success btn-xs">Update
+                                    class="update btn btn-success btn-xs" data-toggle="modal" data-target="#myModal">Update
                                     </button></td>
                                     <td><button type="button"
                                     name="delete" id="'.$row["idUsuario"].'"s
@@ -69,7 +69,7 @@ if(isset($_POST["action"])){
                 else{
                     $output.='
                     <tr>
-                        <td colspan="4">Data not found</td>                    
+                        <td colspan="4">Data not found</td>
                      </tr>
                      ';
                 }

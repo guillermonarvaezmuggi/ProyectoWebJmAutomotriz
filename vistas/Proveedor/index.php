@@ -70,16 +70,9 @@ $resultado2=mysqli_query($con2,$sql2);
 <body>
   
 <div class="row">
-    
-    
-    
-    
-
-
-
   <!-- Button trigger modal -->
   <div class="container box">
-  <h1 align="center">Lista de Productos</h1>
+  <h1 align="center">Lista de Proveedores</h1>
 
   <div class="input-group" aling="left" style="width:500px">
         <!--<span class="input-group-addon"><span class="glyphicon glyphicon glyphicon-search" aria-hidden="true"></span></span>-->
@@ -100,76 +93,56 @@ $resultado2=mysqli_query($con2,$sql2);
         </div>
         <div class="modal-body">
           <p>
-            <!-- Obtener Categoria -->
-            <h3  >Categoría(*):</h3>
-            <div style="width:200px">
-            <select name="categoria" id="categoria" class="form-control" onchange="this.style.width=250">
-        <?php while($row = $resultadoCategoria->fetch_assoc()){ ?>
-        <option value="<?php echo $row['idCategoria']; ?>">
-        <?php echo $row['nombre'];?></option>
-        <?php } ?>
-        </select>
-          </div>
-            <!-- Obtener SubCategoria -->
-            <h3  >SubCategoria(*):</h3>
-            <div style="width:200px">
-              <select name="subCategoria" id="subCategoria" class="form-control" onchange="this.style.width=200">
-                    <?php while($row2 = $resultadoSubCategoria->fetch_assoc()){ ?>
-                        <option value="<?php echo $row2['idSubCategoria']; ?>">
-                            <?php echo $row2['nombre'];?></option>
-                            <?php } ?>
-                            </select>
-            </div>
-            <!-- Obtener Marca -->
-            <h3  >Marca(*):</h3>
-              <div style="width:150px">
-            <select name="marca" id="marca" class="form-control" onchange="this.style.width=200">
-                  <?php while($row3 = $resultadoMarca->fetch_assoc()){ ?>
-                    <option value="<?php echo $row3['idMarca']; ?>">
-                      <?php echo $row3['nombre'];?></option>
-                    <?php } ?>
-            </select>
-          </div>
-          <!-- Obtener Unidad -->
-            <h3>Unidad(*):</h3>
-            <div style="width:150px">
-              <select name="unidad" id="unidad" class="form-control" onchange="this.style.width=200">
-                <OPTION selected="selected">--seleccione--</option>
-                  <?php while($row4 = $resultadoUnidad->fetch_assoc()){ ?>
-                    <option value="<?php echo $row4['idUnidad']; ?>">
-                      <?php echo $row4['nombre'];?></option>
-                    <?php } ?>
-                  </select>
-            </div>
-            <h3  >Nombre(*):</h3>
+                       
+            <h3  >Nombre</h3>
             <input type="text" name="nombre" id="nombre"
-        class="form-control" placeholder="Ingrese el nombre del producto"/>
-            <h3  >Descripción</h3>
-            <input class="form-control" name="descripcion" type="text" rows="5" cols="3" id="descripcion"
-             placeholder="Ingrese la descripción del producto">
-           <!-- <input type="text" name="descripcion" id="descripcion"
-          class="form-control" placeholder="Ingrese la descripción del producto"/>-->
+        class="form-control" placeholder="Ingrese el nombre del Proveedor"/>
+
+            <h3>Razón Social</h3>
+            <input class="form-control" name="razonSocial" type="text" id="razonSocial"
+             placeholder="Ingrese la Razón Social"/>
           
-            <!--<h3>Imagen</h3>
-            <button type="button" style='width:200px; height:50px'>Seleccionar Imagen</button>
-            <input id="imagen" name="imagen" type="file"/>
-            <h1>Aca va la imagen</h1>
-            -->
             
-            <h3  >Stock(*):</h3>
-            <input type="text" name="stock" id="stock" class="form-control"
-        placeholder="Ingrese el stock"/>
-              <h3  >Precio(*):</h3>
-              <input type="text" name="precio" id="precio" class="form-control"
-          placeholder="Ingrese el precio"/>
-            <h3  >Observación</h3>
-            <input class="form-control" name="observacion" type="text" rows="5" id="observacion"
-            placeholder="Ingrese la(s) observaciones"/>
-             
-            <!--<input type="text" name="observacion" id="observacion"
-        class="form-control"  placeholder="Ingrese la(s) observaciones"/>
-        <br></br>-->
-            <!--<center>-->
+          <h3>Ruc</h3>
+            <input class="form-control" name="ruc" type="text" id="ruc"
+             placeholder="Ingrese el ruc respectivo" onkeypress="return valida(event)"/>
+          
+
+          <h3>Teléfono</h3>
+            <input class="form-control" name="telefono" type="text" id="telefono"
+             placeholder="Ingrese el teléfono principal:" onkeypress="return valida(event)"/>
+          
+
+          <h3>Telefono 2:</h3>
+            <input class="form-control" name="telefono2" type="text" id="telefono2"
+             placeholder="Ingrese el teléfono alternativo:" onkeypress="return valida(event)"/>
+          
+
+          <h3>Dirección:</h3>
+            <input class="form-control" name="direccion" type="text" id="direccion"
+             placeholder="Ingrese la Direccion respectiva"/>
+          
+
+          <h3>Email 1:</h3>
+            <input class="form-control" name="email1" type="text" id="email1"
+             placeholder="Ingrese el correo principal"/>
+          
+
+          <h3>Email 2:</h3>
+            <input class="form-control" name="email2" type="text" id="email2"
+             placeholder="Ingrese el correo alternativo"/>
+          
+
+          <h3>Pagina Web:</h3>
+            <input class="form-control" name="paginaWeb" type="text" id="paginaWeb"
+             placeholder="Ingrese la pagina web"/>
+          
+
+          <h3>Observaciones:</h3>
+            <input class="form-control" rows="5" name="observacion" type="text" id="observacion"
+             placeholder="Ingrese la(s) observacione(s)"/>
+          <br></br>
+            
               <div align="center">
                 <button type="button" name="action" id="action"
                     class="btn btn-success" style='width:90px; height:75px'>Add</button>
@@ -221,74 +194,85 @@ $resultado2=mysqli_query($con2,$sql2);
 
 
 $(document).ready(function(){
-    fetchProducto();
-    function fetchProducto(){
+    fetchProveedor();
+    function fetchProveedor(){
         var action="select";
         $.ajax({
             url : "select.php",
             method:"POST",
             data:{action:action},
                 success:function(data){
-                    $("#categoria").val('');
-                    $("#subCategoria").val('');
-                    $("#marca").val('');
-                    $("#unidad").val('');
                     $("#nombre").val('');
-                    $("#descripcion").val('');
+                    $("#razonSocial").val('');
+                    $("#ruc").val('');
+                    $("#telefono").val('');
+                    $("#telefono2").val('');
+                    $("#direccion").val('');
                     //$("#imagen").val('');
-                    $("#stock").val('');
-                    $("#precio").val('');
-                    $("observacion").val('');
+                    $("#email1").val('');
+                    $("#email2").val('');
+                    $("#paginaWeb").val('');
+                    $("#observacion").val('');
                     $("#action").text("Add");
                     $("#result").html(data);
                 }
             }
         )
-
-
     }
 
     $('#action').click(function(){
-        var categoria= $("#categoria").val();
-        var subCategoria=$("#subCategoria").val();
-        var marca=$("#marca").val();
-        var unidad=$("#unidad").val();
-        var nombre=$("#nombre").val();
+        var nombre= $("#nombre").val();
+        var razonSocial=$("#razonSocial").val();
+        var ruc=$("#ruc").val();
+        var telefono=$("#telefono").val();
+        var telefono2=$("#telefono2").val();
         //var imagen=$("#imagen").val();
-        var descripcion=$("#descripcion").val();
-        var stock=$("#stock").val();
-        var precio=$("#precio").val();
+        var direccion=$("#direccion").val();
+        var email1=$("#email1").val();
+        var email2=$("#email2").val();
+        var paginaWeb=$("#paginaWeb").val();
         var observacion=$("#observacion").val();
         var id=$("#user_id").val();
         var action=$("#action").text();
-        if(nombre!='' && categoria!='' && subCategoria!='' && marca!='' && nombre!='' && descripcion!='' &&
-      stock!='' && precio!='' && unidad!=''){
+        if(nombre!='' && razonSocial!='' && ruc!='' && telefono!='' && direccion!='' &&
+      email1!=''){
             $.ajax({
                 url:"action.php",
                 method:"POST",
                 data:{
-                categoria:categoria,
-                subCategoria:subCategoria,
-                marca:marca,
-                unidad:unidad,
                 nombre:nombre,
+                razonSocial:razonSocial,
+                ruc:ruc,
+                telefono:telefono,
+                telefono2:telefono2,
                 //imagen:imagen,
-                descripcion:descripcion,
-                stock:stock,
-                precio:precio,
+                direccion:direccion,
+                email1:email1,
+                email2:email2,
+                paginaWeb:paginaWeb,
                 observacion:observacion,
                 id:id,
                 action:action},
                 success:function(result){
                     console.log("La respuesta fue:")
                     console.log(result);
+                    console.log(nombre);
+                    console.log(razonSocial);
+                    console.log(ruc);
+                    console.log(telefono);
+                    console.log(telefono2);
+                    console.log(direccion);
+                    console.log(email1);
+                    console.log(email2);
+                    console.log(paginaWeb);
+                    console.log(observacion);
                 alert(result);
-                    fetchProducto();
+                        fetchProveedor();
                 }
             })
 
         }else{
-            alert("Debe rellenar todos los campos(*)")
+            alert("Faltan rellenar campos")
         }
     });
 
@@ -302,29 +286,30 @@ $(document).on('click','.update',function(){
         success:function(data){
             $('#action').text("Edit");
             $('#user_id').val(id);
-            $("#categoria").val(data.categoria);
-            $("#subCategoria").val(data.subCategoria);
-            $("#marca").val(data.marca);
-            $("#unidad").val(data.unidad);
             $("#nombre").val(data.nombre);
-            $("#descripcion").val(data.descripcion);
+            $("#razonSocial").val(data.razonSocial);
+            $("#ruc").val(data.ruc);
+            $("#telefono").val(data.telefono);
+            $("#telefono2").val(data.telefono2);
+            $("#direccion").val(data.direccion);
             //$("#imagen").val(data.imagen);
-            $("#stock").val(data.stock);
-            $("#precio").val(data.precio);
+            $("#email1").val(data.email1);
+            $("#email2").val(data.email2);
+            $("#paginaWeb").val(data.paginaWeb);
             $("#observacion").val(data.observacion);
         }
     });
 })
 $(document).on('click','.delete',function(){
     var id=$(this).attr("id");
-    if(confirm("Estas seguro de Eliminar a este Producto?")){
+    if(confirm("Estas seguro de Eliminar a este Proveedor?")){
         var action="Delete";
         $.ajax({
             url:"action.php",
             method:"POST",
             data:{id:id,action:action},
             success:function(result){
-                fetchProducto()();
+                fetchProveedor();
                 alert(result);
             }
         })

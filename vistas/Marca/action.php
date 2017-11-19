@@ -18,7 +18,7 @@ if(isset($_POST["action"])){
                 if(mysqli_query($con,$procedure)){
                     $query="CALL insertMarca('".$nombre."');";
                     if(mysqli_query($con,$query)){
-                        echo 'Data Inserted';
+                        echo 'Marca registrada exitosamente';
                     }else{
                         echo "error1";
                     }
@@ -53,8 +53,8 @@ UPDATE usuario SET idRol=".$rol.",usuario='".$usuario"',contrasena='".$contrasen
                 $query="CALL updateMarca(".$_POST["id"].",'".$nombre."')";
                 if(mysqli_query($con,$query))
                 {
-                    echo 'Data Updated';
-                }  
+                    echo 'Marca actualizada exitosamente';
+                }
             }
         }
     }
@@ -73,7 +73,7 @@ UPDATE usuario SET idRol=".$rol.",usuario='".$usuario"',contrasena='".$contrasen
                 $query="CALL deleteMarca('".$_POST["id"]."')";
                 if(mysqli_query($con,$query))
                 {
-                    echo "Data Deleted";
+                    echo "Marca eliminada existosamente";
                 }
                 else{
                     echo "error1";

@@ -37,6 +37,7 @@ if(isset($_POST["action"])){
                     .$dni."','".$sexo."',".$telefono.",'".$domicilio."');";
                     if(mysqli_query($con,$query)){
                         echo 'Data Inserted';
+                        
                     }
                 }
             }

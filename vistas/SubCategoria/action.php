@@ -18,7 +18,7 @@ if(isset($_POST["action"])){
                 if(mysqli_query($con,$procedure)){
                     $query="CALL insertSubCategoria('".$nombre."');";
                     if(mysqli_query($con,$query)){
-                        echo 'Data Inserted';
+                        echo 'SubCategoría registrada exitosamente';
                     }else{
                         echo "error1";
                     }
@@ -53,7 +53,7 @@ UPDATE usuario SET idRol=".$rol.",usuario='".$usuario"',contrasena='".$contrasen
                 $query="CALL updateSubCategoria(".$_POST["id"].",'".$nombre."')";
                 if(mysqli_query($con,$query))
                 {
-                    echo 'Data Updated';
+                    echo 'SubCategoria actualizada exitosamente';
                 }  
             }
         }
@@ -73,7 +73,7 @@ UPDATE usuario SET idRol=".$rol.",usuario='".$usuario"',contrasena='".$contrasen
                 $query="CALL deleteSubCategoria('".$_POST["id"]."')";
                 if(mysqli_query($con,$query))
                 {
-                    echo "Data Deleted";
+                    echo "SubCagoria eliminada exitosamente";
                 }
                 else{
                     echo "error1";

@@ -125,7 +125,6 @@ function crearTablaProducto(){
     idUnidad int,
     nombre varchar(300),
     descripcion varchar(300),
-    imagen LONGBLOB,
     stock float,
     precio float,
     observacion varchar(300),
@@ -155,14 +154,11 @@ function crearTablaSuministro(){
     idProducto int,
     idProveedor int,
     cantidad float,
-    FechaPedido date,
+    fechaPedido date,
     precio float,
-    CONSTRAINT idProducto_fk FOREIGN KEY
-    (idProducto) REFERENCES producto(idProducto),
-    CONSTRAINT idProveedor_fk FOREIGN KEY
-    (idProveedor) REFERENCES proveedor(idProveedor),
-    CONSTRAINT cantidad_ck check(cantidad>0),
-    CONSTRAINT precio_ck check(precio>0),
+    observacion varchar(200),
+    CONSTRAINT idProducto_fk FOREIGN KEY (idProducto) REFERENCES producto(idProducto),
+    CONSTRAINT idProveedor_fk FOREIGN KEY (idProveedor) REFERENCES proveedor(idProveedor),
     CONSTRAINT idProdProvee_pk PRIMARY KEY
     (idProducto,idProveedor)
     )";

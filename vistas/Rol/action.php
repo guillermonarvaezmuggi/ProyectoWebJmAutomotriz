@@ -18,7 +18,7 @@ if(isset($_POST["action"])){
                 if(mysqli_query($con,$procedure)){
                     $query="CALL insertRol('".$nombre."');";
                     if(mysqli_query($con,$query)){
-                        echo 'Data Inserted';
+                        echo 'Rol registrado exitosamente';
                     }
                 }
             }
@@ -48,7 +48,7 @@ UPDATE usuario SET idRol=".$rol.",usuario='".$usuario"',contrasena='".$contrasen
                 $query="CALL updateRol(".$_POST["id"].",'".$nombre."')";
                 if(mysqli_query($con,$query))
                 {
-                    echo 'Data Updated';
+                    echo 'Rol actualizado correctamente';
                 }  
             }
         }
@@ -65,10 +65,10 @@ UPDATE usuario SET idRol=".$rol.",usuario='".$usuario"',contrasena='".$contrasen
         {
             if(mysqli_query($con,$procedure))
             {
-                $query="CALL deleteRol('".$_POST["id"]."')";
+                $query="CALL deleteRol(".$_POST["id"].")";
                 if(mysqli_query($con,$query))
                 {
-                    echo "Data Deleted";
+                    echo "Rol Eliminado";
                 }
                 else{
                     echo "error1";

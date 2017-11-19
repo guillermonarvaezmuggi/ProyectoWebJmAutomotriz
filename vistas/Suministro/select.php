@@ -8,31 +8,27 @@ $con = $cnn->conectar();
 mysqli_select_db($con,"jmAutomotrizEIRL");
 
 if(isset($_POST["action"])){
-    $procedure ="CREATE PROCEDURE selectProducto()
+    $procedure ="CREATE PROCEDURE selectSuministro()
         BEGIN
-            SELECT * FROM producto order by idProducto asc;
+            SELECT * FROM suministro;
         END;
         ";
-        if(mysqli_query($con,"DROP PROCEDURE IF EXISTS selectProducto"))
+        if(mysqli_query($con,"DROP PROCEDURE IF EXISTS selectSuministro"))
         {
             if(mysqli_query($con,$procedure)){  
-                $query= "CALL selectProducto()";
+                $query= "CALL selectSuministro()";
                 $result=mysqli_query($con,$query);
                 $output.='
                     <table class="table table-bordered">
                             <tr>
                                 <th width=5% >idProducto</th>
-                                <th width=5%>idCategoria</th>
-                                <th width=5%>idSubCategoria</th>
-                                <th width=5%>idMarca</th>
-                                <th width=5%>idUnidad</th>
-                                <th width=15%%>nombre</th>
-                                <th width=10%>descripcion</th>
-                                <th width=5%>stock</th>
+                                <th width=5%>idProveedor</th>
+                                <th width=5%>cantidad</th>
+                                <th width=5%>Fecha del Pedido</th>
                                 <th width=5%>Precio</th>
                                 <th width=10%>Observacion</th>
-                                <th width=10%>Update</th>
-                                <th width=10%>Delete</th>
+                                <th width=10%>Modificar</th>
+                                <th width=10%>Eliminar</th>
 
                          </tr>
                 ';
@@ -41,22 +37,18 @@ if(isset($_POST["action"])){
                         $output.='
                             <tr>
                                 <td>'.$row["idProducto"] .'</td>
-                                <td>'. $row["idCategoria"] .'</td>
-                                <td>'. $row["idSubCategoria"] .'</td>
-                                <td>'. $row["idMarca"] .'</td>
-                                <td>'. $row["idUnidad"] .'</td>
-                                <td>'. $row["nombre"] .'</td>
-                                <td>'. $row["descripcion"] .'</td>
-                                <td>'. $row["stock"] .'</td>
+                                <td>'. $row["idProveedor"] .'</td>
+                                <td>'. $row["cantidad"] .'</td>
+                                <td>'. $row["fechaPedido"] .'</td>
                                 <td>'. $row["precio"] .'</td>
                                 <td>'. $row["observacion"] .'</td>
                                 <td><button type="button"
-                                    name="update" id="'.$row["idProducto"].'"s
-                                    class="update btn btn-success btn-xs" data-toggle="modal" data-target="#myModal">Update
+                                    name="update" id="'.$row["idProducto"].'" id2="'.$row["idProveedor"].'"
+                                    class="update btn btn-success btn-xs" data-toggle="modal" data-target="#myModal">Modificar
                                     </button></td>
                                     <td><button type="button"
-                                    name="delete" id="'.$row["idProducto"].'"s
-                                    class="delete btn  btn-danger btn-xs">Delete
+                                    name="delete" id="'.$row["idProducto"].'" id2="'.$row["idProveedor"].'"
+                                    class="delete btn  btn-danger btn-xs">Eliminar
                                     </button></td>
                             </tr>
                         ';

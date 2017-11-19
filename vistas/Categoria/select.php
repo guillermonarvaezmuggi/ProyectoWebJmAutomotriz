@@ -23,8 +23,8 @@ if(isset($_POST["action"])){
                             <tr>
                                 <th width=5% >idCategoria</th>
                                 <th width=15%>Nombre</th>
-                                <th width=5%>Update</th>
-                                <th width=5%>Delete</th>
+                                <th width=5%>Modificar</th>
+                                <th width=5%>Eliminar</th>
                         
                          </tr>
                 ';
@@ -36,11 +36,11 @@ if(isset($_POST["action"])){
                                 <td>'. $row["nombre"].'</td>
                                 <td><button type="button"
                                     name="update" id="'.$row["idCategoria"].'"s
-                                    class="update btn btn-success btn-xs">Update
+                                    class="update btn btn-success btn-xs" data-toggle="modal" data-target="#myModal">Modificar
                                     </button></td>
                                     <td><button type="button"
                                     name="delete" id="'.$row["idCategoria"].'"s
-                                    class="delete btn  btn-danger btn-xs">Delete
+                                    class="delete btn  btn-danger btn-xs">Eliminar
                                     </button></td>
                             </tr>
                         ';

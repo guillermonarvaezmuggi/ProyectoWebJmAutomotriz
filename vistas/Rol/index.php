@@ -26,26 +26,55 @@
         border-radius:5px;
         margin-top:100px;
     }
-        
+
     </style>
 <body>
-
-<div class="container box">
-    <h1>Ingreso de Roles</h1>
-    <label>Nombre del rol :</label>
-    <input type="text" name="nombre" id="nombre" class="form-control" 
-    onkeypress="return valida(event)">
-    <br></br>
-    <div align="center" >
+  <!-- Button trigger modal -->
+  <div class="container box">
+  <h1 align="center">Roles de los usuarios</h1>
+  <div align="right">
+  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Añadir</button>
+  </div>
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h1 class="modal-title" align="center">Registro</h1>
+        </div>
+        <div class="modal-body">
+          <p>
+            <label>Rol</label>
+            <input type="text" name="nombre" id="nombre" class="form-control">
+            <br></br>
+            <div align="center">
             <button type="button" name="action" id="action"
-                class="btn btn-warning" style='width:80px; height:65px'> Add</button>
-            <input type="hidden" name="id" id="user_id"/>
+                class="btn btn-success" style='width:90px; height:75px'>Add</button>
+            
+              </div>
+              <br></br>
+            <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </p>
+        </div>
+      </div>
     </div>
-    <br></br>
-    <div id="result" class="table-responsive">
-    </div>
+  </div>
+  <div align="center" >
+  <!--
+          <button type="button" name="action" id="action"
+              class="btn btn-warning" style='width:100px; height:75px'> Add</button>
+  -->
+          <input type="hidden" name="id" id="user_id"/>
+          </div>
+        <br></br>
+        <div id="result" class="table-responsive">
 
-</div>
+        </div>
+  </div>
 
 <script>
         function valida(e){
@@ -87,7 +116,7 @@ $(document).ready(function(){
             }
         )
 
-       
+
     }
 
     $('#action').click(function(){
@@ -121,12 +150,14 @@ $(document).on('click','.update',function(){
         data:{id:id},
         dataType:"json",
         success:function(data){
-            $('#action').text("Edit");  
+            $('#action').text("Edit");
             $('#user_id').val(id);
             $("#nombre").val(data.nombre);
         }
     });
 })
+
+
 $(document).on('click','.delete',function(){
     var id=$(this).attr("id");
     if(confirm("Estas seguro de Eliminar este cargo?")){
@@ -144,5 +175,7 @@ $(document).on('click','.delete',function(){
         return false;
     }
 })
+
+
 })
 </script>
