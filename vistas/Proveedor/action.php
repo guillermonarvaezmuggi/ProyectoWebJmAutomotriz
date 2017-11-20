@@ -67,8 +67,8 @@ if($_POST["action"]=="Edit")
     $email2=mysqli_real_escape_string($con,$_POST['email2']);
     $paginaWeb=mysqli_real_escape_string($con,$_POST['paginaWeb']);
     $observacion=mysqli_real_escape_string($con,$_POST['observacion']);
-      $procedure="CREATE PROCEDURE updateProveedor(IN user_id int(11)
-      ,IN nombreP varchar(100),
+      $procedure="CREATE PROCEDURE updateProveedor(IN user_id int(11),
+      IN nombreP varchar(100),
       IN razonSocialP varchar(30),
       IN rucP varchar(11),IN telefonoP int(9), 
     IN telefono2P int(9),
@@ -78,10 +78,16 @@ if($_POST["action"]=="Edit")
        IN paginaWebP varchar(100),
        IN observacionesP varchar(200))
       BEGIN
-      UPDATE proveedor SET nombre=nombreP,razonSocial=razonSocialP,
-      ruc=rucP,telefono=telefonoP,telefono2=telefono2P,
-      direccion=direccionP,email1=emailP,email2=email2P,
-      paginaWeb=paginaWeb2,observaciones=observacionesP
+      UPDATE proveedor SET nombre=nombreP,
+      razonSocial=razonSocialP,
+      ruc=rucP,
+      telefono=telefonoP,
+      telefono2=telefono2P,
+      direccion=direccionP,
+      email1=emailP,
+      email2=email2P,
+      paginaWeb=paginaWeb2,
+      observaciones=observacionesP
       WHERE idProveedor=user_id;
       END;
   ";
