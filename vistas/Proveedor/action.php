@@ -69,8 +69,8 @@ if($_POST["action"]=="Edit")
     $observacion=mysqli_real_escape_string($con,$_POST['observacion']);
       $procedure="CREATE PROCEDURE updateProveedor(IN user_id int(11)
       ,IN nombreP varchar(100),
-      IN razonSocialP varchar(30), 
-    , IN rucP varchar(11),IN telefonoP int(9), 
+      IN razonSocialP varchar(30),
+      IN rucP varchar(11),IN telefonoP int(9), 
     IN telefono2P int(9),
        IN direccionP varchar(200), 
        IN email1P varchar(100),
@@ -95,7 +95,7 @@ UPDATE usuario SET idRol=".$rol.",usuario='".$usuario"',contrasena='".$contrasen
         {
             if(mysqli_query($con,$procedure))
             {
-                $query="CALL updateProducto(".$_POST["id"].",'".$nombre."','".$razonSocial."',
+                $query="CALL updateProveedor(".$_POST["id"].",'".$nombre."','".$razonSocial."',
             '".$ruc."',".$telefono.",".$telefono2.",
           '".$direccion."','".$email."',
         '".$email2."','".$paginaWeb."','".$observacion."')";
